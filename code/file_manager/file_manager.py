@@ -49,3 +49,12 @@ class FileManager:
             n_rows: int = 100_000
     ) -> DataFrame:
         return read_csv(self.training_data_file, index_col='row_index', nrows=n_rows)
+
+    def save_dataframe(
+            self,
+            df: DataFrame,
+            file_name: str
+    ) -> Path:
+        output_file = self.data_folder / file_name
+        df.to_csv(output_file)
+        return output_file
